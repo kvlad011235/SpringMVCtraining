@@ -1,5 +1,6 @@
 package testgroup.filmography.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +22,18 @@ import java.util.List;
  */
 @Controller
 public class FilmController {
+    /*
+  После того как пометил аннотациями @Repository и @Service нам больше не нужно самим создавать конкретные объекты этих классов
+  Вместо этого можно пометить поле специальной аннотацией @Autowired и Spring сам подберет подходящую реализацию:
 
-    private FilmService filmService = new FilmServiceImpl();
+  Аннотация @Autowired (автосвязывание) сообщает Spring о том, что он
+  должен покопаться у себя в контексте и подставить сюда подходящий бин.
+  Очень удобно.
+  Если до этого мы использовали интерфейсы, чтобы не беспокоиться насчет конкретной реализации методов,
+  то теперь нам не нужно беспокоиться даже насчет реализации самого интерфейса и даже знать ее название.
+     */
+    @Autowired
+    private FilmService filmService;
 /*
 метод для отображения главной страницы со списком фильмов.
 Получаем список фильмов из сервиса и добавляем его в модель

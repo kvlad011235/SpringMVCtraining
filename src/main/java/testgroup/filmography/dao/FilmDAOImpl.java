@@ -1,5 +1,6 @@
 package testgroup.filmography.dao;
 
+import org.springframework.stereotype.Repository;
 import testgroup.filmography.model.Film;
 
 import java.util.ArrayList;
@@ -16,7 +17,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Для генерации id используем AtomicInteger.
  * Создадим класс FilmDAOImpl, реализуем все методы и заполним мапу.
  * Что-то вроде этого.
+ *
+ * Дело в том, что сейчас наши хранилище и сервис это просто классы, и чтобы их использовать приходится самим создавать объект класса (new FilmServiceImpl()).
+ *  * Но у нас ведь не просто так подключен Spring, так пусть он сам это дело и контролирует.
+ *  * Чтобы отдать наши классы под управление Spring'а, нужно обозначить, что они являются компонентами.
+ *  * Для этого отметим их специальными аннотациями: @Repository
+ *Аннотации @Repository и @Service, так же как и @Controller являются производными от @Component.
+ * эти аннотации сообщают Spring о том, что данные классы являются репозиторием и сервисом соответственно.
+ *
  */
+@Repository
 public class FilmDAOImpl implements FilmDAO {
     private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
     private static Map<Integer, Film> films = new HashMap<>();
