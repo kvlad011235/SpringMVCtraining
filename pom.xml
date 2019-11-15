@@ -49,11 +49,13 @@
             <artifactId>spring-orm</artifactId>
             <version>5.1.1.RELEASE</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.7.Final</version>
+            <version>5.4.8.Final</version>
         </dependency>
+
 
         <!--Небольшое замечание насчет DataSource. Это альтернатива DriverManager, которой мы использовали ранее, когда создавали для проверки подключения метод main
             Для для создания соединения с БД предпочтительнее использовать DBCP библиотеку.

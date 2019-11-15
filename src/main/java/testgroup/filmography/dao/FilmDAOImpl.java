@@ -39,6 +39,7 @@ public class FilmDAOImpl implements FilmDAO {
     Добавляем фабрику сессий и будем работать через нее
      */
     private SessionFactory sessionFactory;
+
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
