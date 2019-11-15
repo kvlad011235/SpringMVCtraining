@@ -30,13 +30,40 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
+        <!-- Подключение плагина для работы с базой данных MySQL-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.11</version>
         </dependency>
+        <!--чтобы наш Spring не стоял себе в сторонке а тоже участвовал во всей этой движухе с
+        базами данных, нужно подключить еще пару модулей, т.к. все что мы получили ранее
+        от зависимости spring-webmvc для этого уже не достаточно.
+        Нам еще понадобится spring-jdbc, для работы с базой данных, spring-tx, для поддержки
+        транзакций, и spring-orm, для работы с Hibernate.
+        Достаточно этих двух зависимостей ниже. javax.persistence-api(JPA) подъедет вместе с hibernate-core,
+        а spring-jdbc и spring-tx вместе со spring-orm
+         -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.1.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.3.7.Final</version>
+        </dependency>
 
+        <!--Небольшое замечание насчет DataSource. Это альтернатива DriverManager, которой мы использовали ранее, когда создавали для проверки подключения метод main
+            Для для создания соединения с БД предпочтительнее использовать DBCP библиотеку.
+            Добавим в pom.xml следующую зависимость
+         -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>9.0.10</version>
+        </dependency>
 
     </dependencies>
 
