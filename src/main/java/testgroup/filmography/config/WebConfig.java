@@ -5,6 +5,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
@@ -25,7 +27,20 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "testgroup.filmography")
-public class WebConfig {
+/*
+Чтобы использовать из папки res все CSS файлы, картинки нам нужно указать их расположение в конфигурации. Идем в наш класс WebConfig.
+Ранее мы использовали аннотацию @EnableWebMvc чтобы ничего не настраивать, а просто использовать дефолтную конфигурацию.
+Но теперь возникла необходимость кое-что настроить.
+Для этого используем интерфейс WebMvcConfigurer, который позволяет переопределять методы конфигурации.
+Т.о. мы можем использовать конфигурацию по-умолчанию, но при этом некоторые моменты настроить под себя
+ */
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/res/**").addResourceLocations("/res/");
+    }
+
     @Bean
     ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

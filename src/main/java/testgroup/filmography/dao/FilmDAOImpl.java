@@ -1,7 +1,7 @@
 package testgroup.filmography.dao;
 
-import com.mysql.cj.Session;
-import com.mysql.cj.xdevapi.SessionFactory;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import testgroup.filmography.model.Film;
@@ -30,9 +30,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Repository
 public class FilmDAOImpl implements FilmDAO {
-    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
-    private static Map<Integer, Film> films = new HashMap<>();
-
+//    private static final AtomicInteger AUTO_ID = new AtomicInteger(0); больше не нужны
+//    private static Map<Integer, Film> films = new HashMap<>(); больше не нужны
     /*
     Пришло время заняться наконец нашим DAO.
     Переходим в класс FilmDAOImpl и первым делом удаляем оттуда пробный список, он нам больше не нужен.
@@ -54,7 +53,7 @@ public class FilmDAOImpl implements FilmDAO {
     @SuppressWarnings("unchecked")
     public List<Film> allFilms() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Film").list();
+        return session.createQuery("from Film").list(); // зачем нам вытаскивать из базы все сотни или тысячи записей сразу, если нужная нам находится в первой десятке, лучше вытащим только одну эту десятку за раз на страницу
     }
 
     @Override

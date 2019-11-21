@@ -2,10 +2,7 @@ package testgroup.filmography.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import testgroup.filmography.model.Film;
 import testgroup.filmography.service.FilmService;
@@ -25,7 +22,6 @@ public class FilmController {
     /*
   После того как пометил аннотациями @Repository и @Service нам больше не нужно самим создавать конкретные объекты этих классов
   Вместо этого можно пометить поле специальной аннотацией @Autowired и Spring сам подберет подходящую реализацию:
-
   Аннотация @Autowired (автосвязывание) сообщает Spring о том, что он
   должен покопаться у себя в контексте и подставить сюда подходящий бин.
   Очень удобно.

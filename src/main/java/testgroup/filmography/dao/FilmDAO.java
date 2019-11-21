@@ -10,7 +10,6 @@ import java.util.List;
  *  Я их назвал несколько иначе, но они соответствуют основным CRUD операциям (Create, Read, Update, Delete).
  */
 public interface FilmDAO {
-
     List<Film> allFilms();
     void add(Film film);
     void delete(Film film);
