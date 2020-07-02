@@ -34,7 +34,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.11</version>
+            <version>8.0.16</version>
         </dependency>
         <!--чтобы наш Spring не стоял себе в сторонке а тоже участвовал во всей этой движухе с
         базами данных, нужно подключить еще пару модулей, т.к. все что мы получили ранее
